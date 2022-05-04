@@ -62,7 +62,7 @@ class Locker:
         OPEN_STA_GET=DATA[2:4]
         PASS_STA_GET=DATA[4:6]
         TEMP_GET=DATA[6:8]
-        TEMP=DATA[8::]
+        TEMP=DATA[8::] 
         
         for i in range(len(OPEN_STA_GET.hex())):
             if (OPEN_STA_GET.hex()[i] == '1'):

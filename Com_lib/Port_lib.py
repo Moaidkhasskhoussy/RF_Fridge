@@ -38,14 +38,20 @@ class Port:
     
     @staticmethod
     def Get_Port(VID:int,PID:int):
+        try:
+            device_list = list_ports.comports()
+            for device in device_list:
+                    if (device.vid != None or device.pid != None):
+                        if (device.vid) == VID and device.pid == PID:
+                            port = device.device
+                            break
+            return port                        
+        except Exception :
+            print ("the device Vid"+str(VID)+"PID"+str(PID)+"is not found")
+        else:
+            return port
+           
         
-        device_list = list_ports.comports()
-        for device in device_list:
-                if (device.vid != None or device.pid != None):
-                    if (device.vid) == VID and device.pid == PID:
-                        port = device.device
-                        break
-        return port
     
     
     @staticmethod

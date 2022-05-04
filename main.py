@@ -10,9 +10,11 @@ Out[21]: [1659, 9123]"""
 """UHF reader Port.Get_P_V_ID('COM4')
 Out[4]: [1659, 8963]"""
 ####################################CreatingHardware's Objects ###########################################
-
-Lock=Locker(1659, 9123)
-UHF=UHF_Reader(1659,8963)
+try:
+    Lock=Locker(1659, 9123)
+    UHF=UHF_Reader(1659,8963)
+except Exception:
+    print("Please unplug the devices")
 Opened_Lock=False
 API.POST_inventory([UHF.Get_Inventory()])
 ###################################################################################################
