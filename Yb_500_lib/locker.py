@@ -1,6 +1,6 @@
 import serial
 import time
-
+#Pid and Vid 1659, 9123
 if __package__ is None:
     import sys
     from os import path
@@ -8,8 +8,6 @@ if __package__ is None:
     from Com_lib.Port_lib import Port
 else:
     from Com_lib.Port_lib import Port
-#Lock=Locker(1659, 8963)
-
 class Locker:
     
     def __init__(self,VID:int,PID:int):
@@ -51,8 +49,9 @@ class Locker:
 
         self.ser.write(bytearray.fromhex(Port.Open_Lock_Frame()))
         self.ser.close()
+        time.sleep(0.2)
     #Geting the Locker status False :closed True:open
-    def Get_status(self):
+    def is_open(self):
         if(self.ser.isOpen() == False):
             self.ser.open()
         self.ser.write(bytearray.fromhex(Port.Status_Frame()))
@@ -73,10 +72,10 @@ class Locker:
                 Lock_open=False
 
         return Lock_open
-    
+
+"""    
 Lock=Locker(1659, 8963)
 B=Lock.Get_status()
-"""
 DATA=B[6:len(B)-2]
 ERR_STA_GET=DATA[0:2]
 OPEN_STA_GET=DATA[2:4]
