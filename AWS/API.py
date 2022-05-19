@@ -28,7 +28,7 @@ url = "https://ix5wrwn1jd.execute-api.us-east-1.amazonaws.com/dev"
 headers = {"Content-Type": "application/json","x-api-key": "laYDmRmRVE6IqcwOxRFNl7zE37m5DSrEF6z6eUQ0"}
  
 
-id="/84654ca8-9948-45f0-a318-35d89bcd8e7a"
+id="/9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2"
 
 ##################################################################################################
 
@@ -38,7 +38,7 @@ def Get_status():
 
 def PUT_status(status:str):
     data={
-      "canteen_id": "84654ca8-9948-45f0-a318-35d89bcd8e7a",
+      "canteen_id": "9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2",
       "status": status
     }
     Change_status = requests.put(url+"/status"+id, json =data, headers=headers)
@@ -46,7 +46,7 @@ def PUT_status(status:str):
 
 def POST_inventory(inventaire:list):
     data={
-  "canteen_id": "84654ca8-9948-45f0-a318-35d89bcd8e7a",
+  "canteen_id": "9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2",
   "inventory": inventaire,
   "updated_from": ID
 }

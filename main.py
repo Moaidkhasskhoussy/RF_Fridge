@@ -19,8 +19,10 @@ Opened_Lock=False
 API.POST_inventory([UHF.Get_Inventory()])
 ###################################################################################################
 while(1):
-    
-    response_status = API.Get_status()
+    try:
+        response_status = API.Get_status()
+    except Exception :
+        pass
     #################################Opening the Canteen Procedure#########################################
     if (Lock.is_open()==False)and(response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==False):
         API.POST_inventory([UHF.Get_Inventory()])
