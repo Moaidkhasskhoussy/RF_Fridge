@@ -1,4 +1,4 @@
-from RF_lib_lib.Rfid_reader_lib import UHF_Reader
+from RF_lib.Rfid_reader_lib import UHF_Reader
 from Com_lib.Port_lib import Port
 from Yb_500_lib.locker import Locker
 from AWS import API
