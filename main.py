@@ -15,21 +15,32 @@ try:
     UHF=UHF_Reader(1659,8963)
 except Exception:
     print("Please unplug the devices")
+#####################################Initilize Parameters########################################
 Opened_Lock=False
-API.POST_inventory([UHF.Get_Inventory()])
+try:
+    API.POST_inventory([UHF.Get_Inventory()])
+    Change_status = API.PUT_status("CLOSED")
+except Exception:
+    print(Exception)
 ###################################################################################################
 while(1):
     try:
         response_status = API.Get_status()
     except Exception :
-        pass
+        print(Exception)
     #################################Opening the Canteen Procedure#########################################
-    if (Lock.is_open()==False)and(response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==False):
-        API.POST_inventory([UHF.Get_Inventory()])
-        Opened_Lock=True
-        Lock.Open_L()    
+    try:
+        if (Lock.is_open()==False)and(response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==False):
+            Opened_Lock=True
+            Lock.Open_L()    
+    except Exception :
+            print(Exception)
     #################################Closing the Canteen Procedure#########################################
-    if(Lock.is_open()==False)and (response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==True):        
-        Change_status = API.PUT_status("CLOSED")
-        API.POST_inventory([UHF.Get_Inventory()])
-        Opened_Lock=False
+    try:
+
+        if(Lock.is_open()==False)and (response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==True):        
+            Change_status = API.PUT_status("CLOSED")
+            API.POST_inventory([UHF.Get_Inventory()])
+            Opened_Lock=False
+    except Exception :
+            print(Exception)
