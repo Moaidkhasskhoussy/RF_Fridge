@@ -18,7 +18,7 @@ except BaseException as e :
 #####################################Initilize Parameters########################################
 Opened_Lock=False
 try:
-    API.POST_inventory([UHF.Get_Inventory()])
+    API.POST_inventory_S([UHF.Get_Inventory()])
     Change_status = API.PUT_status("CLOSED")
 except BaseException as e :
     print(str(e))
@@ -40,7 +40,7 @@ while(1):
 
         if(Lock.is_open()==False)and (response_status.json()["canteenStatus"]=='OPEN')and(Opened_Lock==True):        
             Change_status = API.PUT_status("CLOSED")
-            API.POST_inventory([UHF.Get_Inventory()])
+            API.POST_inventory_C([UHF.Get_Inventory()])
             Opened_Lock=False
     except BaseException as e :
         print(str(e))

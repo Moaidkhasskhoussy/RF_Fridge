@@ -44,11 +44,20 @@ def PUT_status(status:str):
     Change_status = requests.put(url+"/status"+id, json =data, headers=headers)
     return Change_status
 
-def POST_inventory(inventaire:list):
+def POST_inventory_S(inventaire:list):
     data={
   "canteen_id": "9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2",
   "inventory": inventaire,
   "updated_from": ID
+}
+    Post_status=requests.post(url+"/inventory",json=data, headers=headers)
+    return Post_status
+
+def POST_inventory_C(inventaire:list):
+    data={
+  "canteen_id": "9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2",
+  "inventory": inventaire,
+  "updated_from": "CLIENT"
 }
     Post_status=requests.post(url+"/inventory",json=data, headers=headers)
     return Post_status
