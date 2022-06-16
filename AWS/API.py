@@ -7,7 +7,7 @@ Created on Thu Apr 14 12:37:03 2022
 Development:https://ix5wrwn1jd.execute-api.us-east-1.amazonaws.com/dev
 Mock Server:https://stoplight.io/mocks/foodwize-canteen/foodwize-canteen-api/56520568
 An API key is a token that you provide when making API calls. Include the token in a header parameter called x-api-key.
-
+done
 
 """
 import requests
@@ -15,21 +15,22 @@ import socket
 
 
 ########################################Building the url form ###################################
-
-hostname=socket.gethostname()   
-
-IPAddr=socket.gethostbyname(hostname)
- 
-ID=hostname+"_IP_"+IPAddr  
-
-url = "https://ix5wrwn1jd.execute-api.us-east-1.amazonaws.com/dev"
-
- 
-headers = {"Content-Type": "application/json","x-api-key": "laYDmRmRVE6IqcwOxRFNl7zE37m5DSrEF6z6eUQ0"}
- 
-
-id="/9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2"
-
+try:
+    hostname=socket.gethostname()   
+    
+    IPAddr=socket.gethostbyname(hostname)
+     
+    ID=hostname+"_IP_"+IPAddr  
+    
+    url = "https://ix5wrwn1jd.execute-api.us-east-1.amazonaws.com/dev"
+    
+     
+    headers = {"Content-Type": "application/json","x-api-key": "laYDmRmRVE6IqcwOxRFNl7zE37m5DSrEF6z6eUQ0"}
+     
+    
+    id="/9fe7fb0e-5012-bcf0-0bcd-a1185394c9b2"
+except BaseException as e :
+    print(str(e))
 ##################################################################################################
 
 def Get_status():
