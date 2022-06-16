@@ -7,7 +7,7 @@ Created on Thu Apr 14 12:37:03 2022
 Development:https://ix5wrwn1jd.execute-api.us-east-1.amazonaws.com/dev
 Mock Server:https://stoplight.io/mocks/foodwize-canteen/foodwize-canteen-api/56520568
 An API key is a token that you provide when making API calls. Include the token in a header parameter called x-api-key.
-done
+doned
 
 """
 import requests
