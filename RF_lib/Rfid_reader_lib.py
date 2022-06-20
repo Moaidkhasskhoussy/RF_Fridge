@@ -127,7 +127,7 @@ class UHF_Reader:
         EPC_S=list(range(len(EPC)))
         for Tag_index in range(len(EPC)):
             EPC_S[Tag_index]= bytearray.fromhex(EPC[Tag_index])
-            EPC_S[Tag_index]=EPC_S[Tag_index][4::].decode("ASCII")
+            EPC_S[Tag_index]=EPC_S[Tag_index][6::].decode("ASCII")
         self.ser.close()
         return {"TOTAL":TOTAL,"EPC_hex":EPC,"EPC_S":EPC_S}
             
