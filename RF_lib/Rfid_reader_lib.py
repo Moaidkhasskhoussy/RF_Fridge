@@ -126,8 +126,12 @@ class UHF_Reader:
             EPC=self.Get_left(Frames,REPORTS,TRANSF,EPC)
         EPC_S=list(range(len(EPC)))
         for Tag_index in range(len(EPC)):
-            EPC_S[Tag_index]= bytearray.fromhex(EPC[Tag_index])
-            EPC_S[Tag_index]=EPC_S[Tag_index][6::].decode("ASCII")
+            try:
+                EPC_S[Tag_index]= bytearray.fromhex(EPC[Tag_index])
+                EPC_S[Tag_index]=EPC_S[Tag_index][6::].decode("ASCII")
+            except BaseException as e :
+                print(str(e))
+                EPC_S[Tag_index]="NONE"
         self.ser.close()
         return {"TOTAL":TOTAL,"EPC_hex":EPC,"EPC_S":EPC_S}
             
